@@ -1,12 +1,13 @@
 {
-  "name"         : "node-sort-crawler",
-  "version"      : "0.0.1",
-  "description"  : "Find sort",
-  "main"         : "server.js",
-  "author"       : "David Delemotte, Renald Morice, Paul Michaud, Loic Bothorel",
-  "dependencies" : {
-    "express"    : "latest",
-    "request"    : "latest",
-    "cheerio"    : "latest"
+  "name": "node-sort-crawler",
+  "version": "0.0.1",
+  "description": "Find sort",
+  "main": "server.js",
+  "author": "David Delemotte, Renald Morice, Paul Michaud, Loic Bothorel",
+  "dependencies": {
+    "express": "latest",
+    "request": "latest",
+    "cheerio": "latest",
+    "mongodb": "latest"
   }
 }
