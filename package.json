@@ -8,6 +8,6 @@
     "express": "latest",
     "request": "latest",
     "cheerio": "latest",
-    "mongodb": "latest"
+    "mongodb": "latest",
   }
 }
