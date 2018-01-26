@@ -10,38 +10,44 @@ app.get('/sorts', function(req, res){
 
     var baseUrl = 'http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID='
     
-    // parcours de tous les sorts un a un
-    for(var i=1; i <= 1971; i++) {
+    // Parcours de tous les sorts un a un
+    for(var i=1; i <= 2; i++) { // mettre 1971 à la place de 2
         
-        // réalisation de la requête
+        // Réalisation de la requête
         request('http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=' + i, function(error, response, html){
 
             if(!error){
-                // On utilise la libraieie Cheerio sur le code HTML renvoyé, qui nous offre les fonctionnalités d'analyse du DOM de jQuery
+                
+                // On utilise la librairie Cheerio sur le code HTML renvoyé, qui nous offre les fonctionnalités d'analyse du DOM de jQuery
+                // Doc de Cheerios: https://cheerio.js.org
+                
                 var $ = cheerio.load(html);
 
                 // Définition des variables à capturer
-                var title, release, rating;
-                var jsonSortElem = {
-                    name : '',
-                    level : '',
-                    components : '',
-                    spell_resistance: '',
-                    
-                };
+//                var jsonSortElem = {
+//                    name: '',
+//                    school: '',
+//                    level: '',
+//                    components: [],
+//                    spell_resistance: '',
+//                    touch: '',
+//                };
                 
-                // Capture des éléments
+                var jsonSortElem = new Object();
                 
-                 $('.EXEMPLECLASSE').filter(function(){
+                // Capture des éléments dans le HTML
+                
+                $('.heading').filter(function(){
                     var data = $(this);
-
-                    // The .star-box-giga-star class was exactly where we wanted it to be.
-                    // To get the rating, we can simply just get the .text(), no need to traverse the DOM any further
-
-                    rating = data.text();
-
-                    json.rating = rating;
-                })
+                    jsonSortElem.name = data.children().text();
+                });
+                
+                $('.SPDet').each(function(i, elem) {
+                    var data = $(this).html(); // doit renvoyer un truc du style (exemple): <b>School</b> evocation <b>Level</b> paladin 4, ranger 4
+                    // regarder le contenu de tous les <b>, si un des <b> contient un des éléments qu'on recherche, récupérer le texte qui est juste après
+                    
+                    var reg=new RegExp("[ ,;]+", "g");
+                });
                 
             }
         })
