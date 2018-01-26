@@ -13,7 +13,7 @@ app.get('/sorts', function(req, res){
     var sorts = [];
     
     // Parcours de tous les sorts un a un
-    var array = Array.from(Array(205),(x,i)=>i+1);
+    var array = Array.from(Array(1975),(x,i)=>i+1);
     
     async.each(array, function(item, callback) {
 
