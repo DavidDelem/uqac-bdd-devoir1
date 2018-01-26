@@ -13,7 +13,7 @@ app.get('/sorts', function(req, res){
     var sorts = [];
     
     // Parcours de tous les sorts un a un
-    var array = Array.from(Array(1975),(x,i)=>i+1);
+    var array = Array.from(Array(205),(x,i)=>i+1);
     
     async.each(array, function(item, callback) {
 
@@ -95,10 +95,19 @@ app.get('/sorts', function(req, res){
                         });
                     });
 
-//                    $('.SPDesc:not(:nth-of-type(-n+2))').filter(function(){
-//                        var data = $(this);
-//                        jsonSortElem.description = data.children().text();
-//                    });
+                    jsonSortElem.description = "";
+                    
+                    $('.SpellDiv > .SPDesc:nth-last-child(n+4)').filter(function(){
+                        var data = $(this);
+                        jsonSortElem.description = data.children().text();
+                    });
+                    
+                    if(jsonSortElem.description.length == 0) {
+                        $('.SpellDiv > .SPDesc:nth-last-child(n+2)').filter(function(){
+                            var data = $(this);
+                            jsonSortElem.description = data.children().text();
+                        });
+                    }
 
                     sorts.push(jsonSortElem);
                     callback();
