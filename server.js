@@ -13,7 +13,7 @@ app.get('/sorts', function(req, res){
     var sorts = [];
     
     // Parcours de tous les sorts un a un
-    var array = Array.from(Array(20),(x,i)=>i);
+    var array = Array.from(Array(1975),(x,i)=>i+1);
     
     async.each(array, function(item, callback) {
 
@@ -95,10 +95,10 @@ app.get('/sorts', function(req, res){
                         });
                     });
 
-                    $('.SPDesc:first-of-type').filter(function(){
-                        var data = $(this);
-                        jsonSortElem.description = data.children().text();
-                    });
+//                    $('.SPDesc:not(:nth-of-type(-n+2))').filter(function(){
+//                        var data = $(this);
+//                        jsonSortElem.description = data.children().text();
+//                    });
 
                     sorts.push(jsonSortElem);
                     callback();
