@@ -9,5 +9,6 @@
     "request": "latest",
     "cheerio": "latest",
     "mongodb": "latest",
+    "async": "latest"
   }
 }
