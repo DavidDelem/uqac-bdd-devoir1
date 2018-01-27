@@ -9,6 +9,7 @@
     "request": "latest",
     "cheerio": "latest",
     "mongodb": "latest",
-    "async": "latest"
+    "async": "latest",
+    "sqlite3": "latest"
   }
 }

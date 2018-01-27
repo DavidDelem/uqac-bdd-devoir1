@@ -5,13 +5,18 @@
 
 <h3>Exercice 1</h3>
 
+<h4>Installation du projet</h4>
+
+Lancer la commande <b>npm install</b> pour charger les dépendances
+Lancer le fichier correspondant à la question avec la commande <b>node nomFichier.js</b>
+
 <h4>Question 1</h4>
 
 <p>Nous avons réalisé le crawler en Node.js (<i>crawler.js</i>). Nous avons aussi réalisé un autre crawler en Python
 afin de voir lequel des deux était le plus rapide pour récupérer toutes les données (<i>crawler.py</i>).
 Nous récupérons un maximum d'information sur le sort, en plus des informations demandées de base.</p>
 
-<p>Nous enregistrons ensuite les données récupérées dans MongoDB (<i>insertSpells.js</i>).</p>
+<p>Nous enregistrons ensuite les données récupérées dans MongoDB grâce aux fonctions présentes dans <i>insertSpells.js</i> et appelées par le crawler.</p>
 
 <h4>Question 2</h4>
 
