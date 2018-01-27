@@ -1,10 +1,17 @@
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+/* Crawler pour récupérer les sorts sur internet                                       */
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+
+
 var express = require('express');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var async = require("async");
 var app = express();
-var insertSpells = require('insertSpells.js');
+var insertSpells = require('./insertSpells.js');
 
 /* Lorsque l'utilisateur fera une requête à localhost:8088/sorts, les sorts seront récupérés par Crawling */
 
@@ -14,7 +21,7 @@ app.get('/sorts', function(req, res){
     var sorts = [];
     
     // Parcours de tous les sorts un a un
-    var array = Array.from(Array(1975),(x,i)=>i+1);
+    var array = Array.from(Array(15),(x,i)=>i+1);
     
     async.each(array, function(item, callback) {
 
@@ -33,7 +40,7 @@ app.get('/sorts', function(req, res){
 
                     // Capture des éléments dans le HTML
 
-                    $('.heading:first-of-type').filter(function(){
+                    $('.heading:first-of-type').filter(function() {
                         var data = $(this);
                         jsonSortElem.name = data.children().text();
                     });
@@ -117,15 +124,27 @@ app.get('/sorts', function(req, res){
 
     }, function(err) {    
         
-        /* Insertion en base de donnée */
+        /* Insertion en base de donnée MongoDB */
         
-        insertSpells.insert(sorts, function(result) {
+//        insertSpells.insertMongoDB(sorts, function(result) {
+//            if(result) {
+//                console.log('Sorts inssérés dans la base de données MongoDB');
+//            } else {
+//                console.log('Echec lors de l\'insertion des sorts dans la base de données MongoDB');
+//            }
+//        });
+        
+        /* Insertion en base de donnée SQlite */
+        
+        insertSpells.insertSQlite(sorts, function(result) {
             if(result) {
-                res.json(sorts);
+                console.log('Sorts inssérés dans la base de données SQlite');
             } else {
-                res.json(result)
+                console.log('Echec lors de l\'insertion des sorts dans la base de données SQlite');
             }
         });
+        
+        res.json(sorts);
         
     });
 

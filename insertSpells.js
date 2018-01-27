@@ -1,8 +1,26 @@
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+/* Insertion de sorts dans la base MongoDB ou dans la base SQlite                      */
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+
 var fs = require("fs");
+
+/* Configuration MongoDB */
+
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-var insert = function(sortsJson, callback) {
+/* Configuration SQlite */
+
+var sqlite3 = require('sqlite3').verbose();
+
+var db = new sqlite3.Database('./sqlitedb/sorts.db', (err) => {
+  if (err) console.error(err.message);
+  console.log('Connected to the sorts database.');
+});
+
+var insertMongoDB = function(sortsJson, callback) {
     
     MongoClient.connect(url, function(err, db) {
         
@@ -23,7 +41,34 @@ var insert = function(sortsJson, callback) {
 
 }
 
+var insertSQlite = function(sortsJson, callback) {
+    
+
+    
+    db.serialize(function () {
+        
+        /* Création des tables nécessaires (on est obligé de séparer chaque table dans un fichier            */
+        /* car une seule action à la fois n'est possible avec run et il n'y a pas d'alternative avec sqlite3 */
+        
+        db.run(fs.readFileSync('./sql_init/create_table_sort.sql', 'utf8'));
+        db.run(fs.readFileSync('./sql_init/create_table_component.sql', 'utf8'));
+        db.run(fs.readFileSync('./sql_init/create_table_level.sql', 'utf8'));
+        db.run(fs.readFileSync('./sql_init/create_table_sort_component.sql', 'utf8'));
+        db.run(fs.readFileSync('./sql_init/create_table_sort_level.sql', 'utf8'));
+        db.run(fs.readFileSync('./sql_init/insert_data_table_component.sql', 'utf8'));
+        db.run(fs.readFileSync('./sql_init/insert_data_table_level.sql', 'utf8'));
+        
+        db.each("select name from sqlite_master where type='table'", function (err, table) {
+            console.log(table);
+        });
+    });
+    callback(true);
+}
+
+
 module.exports = {
-    /* Insertion dans la base de données */
-    insert: insert
+    /* Insertion dans la base de données MongoDB */
+    insertMongoDB: insertMongoDB,
+    /* Insertion dans la base de données SQlite */
+    insertSQlite: insertSQlite
 }
