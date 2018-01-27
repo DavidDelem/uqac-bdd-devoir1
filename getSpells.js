@@ -1,13 +1,14 @@
-const MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 
 
-MongoClient.connect('mongodb://localhost:27017/sorts', function(err, db) {
+MongoClient.connect('mongodb://localhost:27017', function(err, client) {
     
-    //assert.equal(null, err);
+    assert.equal(null, err);
     console.log("-- Connecté à la collection 'sorts --");
     
-    var sorts_collection = db.sorts;
+    var sorts_db = client.db("sorts");
+    var sorts = sorts_db.collection("sorts");
     
     //Collection = SQL Table
     //Document = 1 table's row
@@ -39,11 +40,11 @@ MongoClient.connect('mongodb://localhost:27017/sorts', function(err, db) {
     };
     
     
-   sorts_collection.mapReduce(map, reduce, function(err, result){
+    sorts.mapReduce(map, reduce, {out: {inline : 1}}, function(err, result){
         assert.equal(null, err);
         console.log(result);
     });
     
     console.log("-- Fin du programme --");
-    db.close();
+    client.close();
 })
