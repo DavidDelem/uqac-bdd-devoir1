@@ -1,8 +1,14 @@
 var fs = require("fs");
+
+// Configuration MongoDB
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-var insert = function(sortsJson, callback) {
+// Configuration SQlite
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
+
+var insertMongoDB = function(sortsJson, callback) {
     
     MongoClient.connect(url, function(err, db) {
         
@@ -23,7 +29,15 @@ var insert = function(sortsJson, callback) {
 
 }
 
+var insertSQlite = function(sortsJson, callback) {
+    // a faire
+    callback(true);
+}
+
+
 module.exports = {
-    /* Insertion dans la base de données */
-    insert: insert
+    /* Insertion dans la base de données MongoDB */
+    insertMongoDB: insertMongoDB,
+    /* Insertion dans la base de données SQlite */
+    insertSQlite: insertSQlite
 }

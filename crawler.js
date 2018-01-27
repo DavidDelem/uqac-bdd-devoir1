@@ -119,7 +119,7 @@ app.get('/sorts', function(req, res){
         
         /* Insertion en base de donnée */
         
-        insertSpells.insert(sorts, function(result) {
+        insertSpells.insertMongoDB(sorts, function(result) {
             if(result) {
                 res.json(sorts);
             } else {
