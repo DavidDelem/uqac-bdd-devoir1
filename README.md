@@ -21,7 +21,8 @@ Nous avons réalisé le code MapReduce permettant de récupérer les sorts corre
 
 Nous avons choisi de faire un schéma plus complexe, avec une table <b>level</b> et une table <b>components</b>.
 En raison des liaisons plusieurs à plusieurs, il est donc nécessaire de créer deux tables supplémentaires: 
-<b>sort_level</b> et <b>sort_component</b>.
+<b>sort_level</b> et <b>sort_component</b>. Le MPD de la base de données est consultable ici:
+<a href="https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing">https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing</a>
 
 La récupération des sorts se fait grâce à la requête SQL suivante (<i>getSpellsSQlite.js</i>):
 <b>METTRE LA REQUETTE SQL</b>
