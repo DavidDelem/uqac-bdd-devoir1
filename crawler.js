@@ -4,6 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var async = require("async");
 var app = express();
+var insertSpells = require('insertSpells.js');
 
 /* Lorsque l'utilisateur fera une requête à localhost:8088/sorts, les sorts seront récupérés par Crawling */
 
@@ -114,8 +115,18 @@ app.get('/sorts', function(req, res){
                 }
             });
 
-    }, function(err){    
-        res.json(sorts);
+    }, function(err) {    
+        
+        /* Insertion en base de donnée */
+        
+        insertSpells.insert(sorts, function(result) {
+            if(result) {
+                res.json(sorts);
+            } else {
+                res.json(result)
+            }
+        });
+        
     });
 
 });

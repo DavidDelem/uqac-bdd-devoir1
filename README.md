@@ -15,13 +15,18 @@ Nous récupérons un maximum d'information sur le sort, en plus des informations
 
 <h4>Question 2</h4>
 
-Nous avons réalisé le code MapReduce permettant de récupérer les sorts correspondants (<i>getSpells.js</i>).
+Nous avons réalisé le code MapReduce permettant de récupérer les sorts correspondants (<i>getSpellsMongoDB.js</i>).
 
 <h4>Question 3</h4>
 
 Nous avons choisi de faire un schéma plus complexe, avec une table <b>level et une table <b>components</b>.
 En raison des liaisons plusieurs à plusieurs, il est donc nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>.
+
+La récupération des sorts se fait grâce à la requête SQL suivante (<i>getSpellsSQlite.js</i>):
+<b>METTRE LA REQUETTE SQL</b>
+
+La requête SQL pour récupérer les sorts 
 
 <h3>Exercice 2</h3>
 
