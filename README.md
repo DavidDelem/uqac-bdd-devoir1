@@ -19,7 +19,7 @@ Nous avons réalisé le code MapReduce permettant de récupérer les sorts corre
 
 <h4>Question 3</h4>
 
-Nous avons choisi de faire un schéma plus complexe, avec une table <b>level et une table <b>components</b>.
+Nous avons choisi de faire un schéma plus complexe, avec une table <b>level</b> et une table <b>components</b>.
 En raison des liaisons plusieurs à plusieurs, il est donc nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>.
 
