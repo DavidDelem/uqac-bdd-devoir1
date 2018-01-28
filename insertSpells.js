@@ -6,6 +6,7 @@
 
 var fs = require("fs");
 
+
 /* Configuration MongoDB */
 
 var MongoClient = require('mongodb').MongoClient;
@@ -43,8 +44,6 @@ var insertMongoDB = function(sortsJson, callback) {
 
 var insertSQlite = function(sortsJson, callback) {
     
-
-    
     db.serialize(function () {
         
         /* Création des tables nécessaires (on est obligé de séparer chaque table dans un fichier            */
@@ -62,6 +61,7 @@ var insertSQlite = function(sortsJson, callback) {
             console.log(table);
         });
     });
+    
     callback(true);
 }
 
