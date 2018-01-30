@@ -12,27 +12,29 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 
 <h4>Question 1</h4>
 
-<p>Nous avons réalisé le crawler en Node.js (<i>crawler.js</i>). Nous avons aussi réalisé un autre crawler en Python
-afin de voir lequel des deux était le plus rapide pour récupérer toutes les données (<i>crawler.py</i>).
-Nous récupérons un maximum d'information sur le sort, en plus des informations demandées de base.</p>
-
-<p>Nous enregistrons ensuite les données récupérées dans MongoDB grâce aux fonctions présentes dans <i>insertSpells.js</i> et appelées par le crawler.</p>
+- [x] Crawler réalisé en Node.js (<i>crawler.js</i>).
+- [x] Crawler réalisé en Python pour comparer la vitesse d'un langage synchrone vs asynchrone, dans (<i>crawler.js</i>).
+- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>insertSpells.js</i>).
 
 <h4>Question 2</h4>
 
-Nous avons réalisé le code MapReduce permettant de récupérer les sorts correspondants (<i>getSpellsMongoDB.js</i>).
+- [x] Code MapReduce pour récupérer les bons sorts (<i>getSpellsMongoDB.js</i>).
+
+# Mettre en réponse à la question les sorts
 
 <h4>Question 3</h4>
 
-Nous avons choisi de faire un schéma plus complexe, avec une table <b>level</b> et une table <b>components</b>.
+- [x] Enregistrement des données dans SQlite (fonction de <i>insertSpells.js</i>).
+- [x] Schéma plus complexe avec plusieurs tables.
+- [ ] Requête SQL pour récupérer les bons sorts (<i>getSpellsSQlite.js</i>)
+
+Nous avons une table <b>sort<b>, une table <b>level</b> (1 à n levels pour un sort) et une table <b>components</b> (1 à n components pour un sort).
 En raison des liaisons plusieurs à plusieurs, il est donc nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>. Le MPD de la base de données est consultable ici:
 <a href="https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing">https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing</a>
 
 La récupération des sorts se fait grâce à la requête SQL suivante (<i>getSpellsSQlite.js</i>):
 <b>METTRE LA REQUETTE SQL</b>
-
-La requête SQL pour récupérer les sorts 
 
 <h3>Exercice 2</h3>
 

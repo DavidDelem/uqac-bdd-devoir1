@@ -5,7 +5,7 @@
 /*-------------------------------------------------------------------------------------*/
 
 var fs = require("fs");
-
+var async = require("async");
 
 /* Configuration MongoDB */
 
@@ -57,9 +57,39 @@ var insertSQlite = function(sortsJson, callback) {
         db.run(fs.readFileSync('./sql_init/insert_data_table_component.sql', 'utf8'));
         db.run(fs.readFileSync('./sql_init/insert_data_table_level.sql', 'utf8'));
         
-        db.each("select name from sqlite_master where type='table'", function (err, table) {
-            console.log(table);
+//        db.each("select name from sqlite_master where type='table'", function (err, table) {
+//            console.log(table);
+//        });
+//        
+//        var sql = 'SELECT _id FROM component';
+// 
+//        db.all(sql, [], (err, rows) => {
+//          if (err) {
+//            throw err;
+//          }
+//          rows.forEach((row) => {
+//            console.log(row._id);
+//          });
+//        });
+        
+        async.each(sortsJson, function(item, callback) {
+            console.log(item.name);
+            
+            db.run(`INSERT INTO sort(_id, name, school, casting_time, _range, effect, duration, saving_throw, spell_resistance, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                   [item._id, item.name, item.school, item.casting_time, item.range, item.effect, item.duration, item.saving_throw, item.spell_resistance, item.description],
+            function(err) {
+                
+                if (err) {
+                  return console.log(err.message);
+                }
+                
+                // insérer dans SORT_COMPONENT et dans SORT_LEVEL
+                callback();
+            });
+        } function(err) {    
+            console.log('ok');
         });
+        
     });
     
     callback(true);

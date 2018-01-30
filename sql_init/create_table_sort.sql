@@ -4,7 +4,7 @@ CREATE TABLE sort (
     school              TEXT,
     casting_time        TEXT,
     _range              TEXT,
-    targets             TEXT,
+    effect              TEXT,
     duration            TEXT,
     saving_throw        TEXT,
     spell_resistance    TEXT,  
