@@ -48,6 +48,8 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 | 1952 | Sundering Shards |
 | 1967 | Wave Shield |
 
+<b>Remarque :</b> Le sort "Liberating Comand" (ID : 643) est mal orthographié, d'où la présence d'un doublon "Liberating Command" (ID :1326) !
+
 - [x] Sort choisi par les experts pour libérer Pito : <b>Dimension Door (ID : 148)</b>.
 
 <h4>Question 3</h4>
