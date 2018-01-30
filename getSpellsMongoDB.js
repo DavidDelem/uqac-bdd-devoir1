@@ -36,12 +36,12 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client) {
         //Check s'il s'agit d'un sort verbal
         if(this.components!== undefined && this.components.length == 1 && this.components[0] == "V") is_verbal = true;
         
-        if(is_wizard && is_verbal) emit(this._id, 1);
+        if(is_wizard && is_verbal) emit({id: this._id, name: this.name}, 1);
     };
     
     
     var reduce = function(key, values){
-        return values.toString();
+        return key;
     };
     
     sorts.mapReduce(map, reduce, {out: {inline : 1}}, function(err, result){
