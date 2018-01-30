@@ -31,11 +31,9 @@ WHERE
 	AND c.name = ?`;
  
 db.all(sql, ['wizard','4','V'], (err, rows) => {
-  if (err) {
-    throw err;
-  }
+  if (err) throw err;
   rows.forEach((row) => {
-    console.log(`${row.id} ${row.name}`);
+    console.log(`${row.id} - ${row.name}`);
   });
 });
  
