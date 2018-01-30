@@ -73,9 +73,8 @@ var insertSQlite = function(sortsJson, callback) {
 //        });
         
         async.each(sortsJson, function(item, callback) {
-            console.log(item.name);
             
-            db.run(`INSERT INTO sort(_id, name, school, casting_time, _range, effect, duration, saving_throw, spell_resistance, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            db.run('INSERT INTO sort(_id, name, school, casting_time, _range, effect, duration, saving_throw, spell_resistance, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                    [item._id, item.name, item.school, item.casting_time, item.range, item.effect, item.duration, item.saving_throw, item.spell_resistance, item.description],
             function(err) {
                 
@@ -86,7 +85,7 @@ var insertSQlite = function(sortsJson, callback) {
                 // insérer dans SORT_COMPONENT et dans SORT_LEVEL
                 callback();
             });
-        } function(err) {    
+        }, function(err) {    
             console.log('ok');
         });
         
