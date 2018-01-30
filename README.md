@@ -58,7 +58,7 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 - [x] Schéma plus complexe avec plusieurs tables.
 - [ ] Requête SQL pour récupérer les bons sorts (<i>getSpellsSQlite.js</i>)
 
-Nous avons une table <b>sort<b>, une table <b>level</b> (1 à n levels pour un sort) et une table <b>components</b> (1 à n components pour un sort).
+Nous avons une table <b>sort</b>, une table <b>level</b> (1 à n levels pour un sort) et une table <b>components</b> (1 à n components pour un sort).
 En raison des liaisons plusieurs à plusieurs, il est donc nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>. Le MPD de la base de données est consultable ici:
 <a href="https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing">https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing</a>
