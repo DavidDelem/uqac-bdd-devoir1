@@ -18,9 +18,37 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 
 <h4>Question 2</h4>
 
-- [x] Code MapReduce pour récupérer les bons sorts (<i>getSpellsMongoDB.js</i>).
+- [x] Code MapReduce pour récupérer les bons sorts (<i>getSpellsMongoDB.js</i>) qui sont listés ci-dessous :
 
-# Mettre en réponse à la question les sorts
+| ID Sort | Nom Sort |
+| ------- | -------- |
+| 50 | Blindness/Deafness |
+| 52 | Blur |
+| 148 | Dimension Door |
+| 198 | Feather Fall |
+| 212 | Flare |
+| 232 | Geas | Lesser |
+| 272 | Hold Portal |
+| 308 | Knock |
+| 487 | Shout |
+| 623 | Dweomer Retaliation |
+| 624 | Emergency Force Sphere |
+| 643 | Liberating Comand |
+| 654 | Chastise |
+| 658 | Sotto Voce |
+| 774 | Flare Burst |
+| 875 | Spark |
+| 1133 | Steal Voice |
+| 1326 | Liberating Command |
+| 1444 | Buoyancy |
+| 1662 | Anti-Summoning Shield |
+| 1805 | Storm Step |
+| 1866 | Buoyancy |
+| 1937 | Silent Table |
+| 1952 | Sundering Shards |
+| 1967 | Wave Shield |
+
+- [x] Sort choisi par les experts pour libérer Pito : <b>Dimension Door (ID : 148)</b>.
 
 <h4>Question 3</h4>
 
