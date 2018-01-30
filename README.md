@@ -13,7 +13,7 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 <h4>Question 1</h4>
 
 - [x] Crawler réalisé en Node.js (<i>crawler.js</i>).
-- [x] Crawler réalisé en Python pour comparer la vitesse d'un langage synchrone vs asynchrone, dans (<i>crawler.js</i>).
+- [x] Crawler réalisé en Python pour comparer la vitesse d'un langage synchrone VS asynchrone, dans (<i>crawler.js</i>).
 - [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>insertSpells.js</i>).
 
 <h4>Question 2</h4>
@@ -48,7 +48,7 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 | 1952 | Sundering Shards |
 | 1967 | Wave Shield |
 
-<b>Remarque :</b> Le sort "Liberating Comand" (ID : 643) est mal orthographié, d'où la présence d'un doublon "Liberating Command" (ID :1326) !
+<b>Remarque :</b> le sort "Liberating Comand" (ID : 643) est mal orthographié, d'où la présence d'un doublon "Liberating Command" (ID :1326) !
 
 - [x] Sort choisi par les experts pour libérer Pito : <b>Dimension Door (ID : 148)</b>.
 
