@@ -78,14 +78,52 @@ var insertSQlite = function(sortsJson, callback) {
                    [item._id, item.name, item.school, item.casting_time, item.range, item.effect, item.duration, item.saving_throw, item.spell_resistance, item.description],
             function(err) {
                 
-                if (err) {
-                  return console.log(err.message);
-                }
+//                if (err) {
+//                  return console.log(err.message);
+//                }
                 
-                // insérer dans SORT_COMPONENT et dans SORT_LEVEL
-                callback();
+                // Insertion dans SORT_LEVEL
+                async.each(item.levels, function(itemLevel, callback) {
+                    
+                    db.get('SELECT _id FROM level WHERE name = ?', [itemLevel.class], (err, row) => {
+                        
+                        db.run('INSERT INTO sort_level(_id_sort, _id_level, _value) VALUES(?, ?, ?)', [item._id, row._id, itemLevel.level], function(err) {
+                            callback();
+                        });
+                        
+                    });
+                    
+                }, function(err) { 
+                    
+                    
+                    // Insertion dans SORT_COMPONENTS
+                    async.each(item.component, function(itemComponent, callback) {
+
+                        db.get('SELECT _id FROM component WHERE name = ?', [itemLevel.class], (err, row) => {
+
+                            db.run('INSERT INTO sort_component(_id_sort, _id_component) VALUES(?, ?)', [item._id, row._id], function(err) {
+                                callback();
+                            });
+                            
+                        });
+
+                    }, function(err) {                         
+                        callback();
+                    });
+                });
             });
         }, function(err) {    
+            
+            
+                        db.all('SELECT * FROM sort_level', [], (err, rows) => {
+                          if (err) {
+                            throw err;
+                          }
+                          rows.forEach((row) => {
+                            console.log(row._value);
+                          });
+                        });
+            
             console.log('ok');
         });
         
