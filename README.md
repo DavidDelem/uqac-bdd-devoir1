@@ -1,4 +1,4 @@
-# uqac-bdd-crawler
+# uqac-bdd-devoir1
 
 <h2>Devoir 1 de Bases de données réparties - Hivers 2018</h2>
 <b>David Delemotte, Paul Michaud, Rénald Morice, Loic Bothorel</b>
