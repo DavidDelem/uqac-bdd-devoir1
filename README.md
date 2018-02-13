@@ -7,14 +7,14 @@
 
 <h4>Installation du projet</h4>
 
-Lancer la commande <b>npm install</b> pour charger les dépendances
+Se placer dans <b>devoir1/exercice1</b> et faire <b>npm install</b>.
 Lancer le fichier correspondant à la question avec la commande <b>node nomFichier.js</b>
 
 <h4>Question 1</h4>
 
-- [x] Crawler réalisé en Node.js (<i>crawler.js</i>).
-- [x] Crawler réalisé en Python pour comparer la vitesse d'un langage synchrone VS asynchrone, dans (<i>crawler.js</i>).
-- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>insertSpells.js</i>).
+- [x] Crawler réalisé en Node.js (<i>exercice1/crawler.js</i>).
+- [x] Crawler réalisé en Python pour comparer la vitesse d'un langage synchrone VS asynchrone, dans (<i>exercice1/crawler.py</i>).
+- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i>).
 
 <h4>Question 2</h4>
 
@@ -55,15 +55,15 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 <h4>Question 3</h4>
 
 - [x] Enregistrement des données dans SQlite (fonction de <i>insertSpells.js</i>).
-- [x] Schéma plus complexe avec plusieurs tables.
-- [ ] Requête SQL pour récupérer les bons sorts (<i>getSpellsSQlite.js</i>)
+- [x] Schéma plus complexe avec plusieurs tables
+- [x] Requête SQL pour récupérer les bons sorts (<i>getSpellsSQlite.js</i>)
 
-Nous avons une table <b>sort</b>, une table <b>level</b> (1 à n levels pour un sort) et une table <b>components</b> (1 à n components pour un sort).
-En raison des liaisons plusieurs à plusieurs, il est donc nécessaire de créer deux tables supplémentaires: 
-<b>sort_level</b> et <b>sort_component</b>. Le MPD de la base de données est consultable ici:
-<a href="https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing">https://drive.google.com/file/d/10Gzm9UqpQWytelA4e6ejtYysefTJFOBY/view?usp=sharing</a>
+Le schéma créé dans SQlite est le suivant:
+![schema bdd](img/schemabdd.png?raw=true)
 
-La récupération des sorts se fait grâce à la requête SQL suivante (<i>getSpellsSQlite.js</i>):
+La présence des tables <b>sort_component</b> et <b>sort_level</b> est due aux liaisons plusieurs à plusieurs entre <b>sort</b>, <b>level</b> et <b>component</b> (un sort contient 1 à n levels, un level est associé à 1 à n sort, de même pour les components)
+
+La récupération des sorts se fait grâce à la requête SQL suivante:
 <b>METTRE LA REQUETTE SQL</b>
 
 <h3>Exercice 2</h3>
