@@ -13,11 +13,11 @@ var db = new sqlite3.Database('./sqlitedb/sorts.db', (err) => {
 var sql = `
 SELECT
 	s._id id,
-    s._name name
+    s.name name
 FROM
 	SORT s,
 	SORT_LEVEL sl,
-	LEVELS l,
+	LEVEL l,
 	SORT_COMPONENT sc,
 	COMPONENT c
 WHERE
@@ -26,11 +26,13 @@ WHERE
 	AND l._id = sl._id_level
 	AND c._id = sc._id_component
 	
-	AND CONTAINS(l.name, ?)
-	AND sl.value <= ?
-	AND c.name = ?`;
+	AND l.name LIKE ?
+	AND sl._value <= ?
+	AND c.name = ?
+    AND (SELECT count(*) FROM SORT_COMPONENT sc2 WHERE sc2._id_sort = s._id ) = 1`;
  
-db.all(sql, ['wizard','4','V'], (err, rows) => {
+db.all(sql, ["%wizard%", 4, "V"], (err, rows) => {
+    
   if (err) throw err;
   rows.forEach((row) => {
     console.log(`${row.id} - ${row.name}`);

@@ -85,7 +85,7 @@ var insertSQlite = function(sortsJson, callback) {
                 // Insertion dans SORT_LEVEL
                 async.each(item.levels, function(itemLevel, callback) {
                     
-                    db.get('SELECT _id FROM level WHERE name = ?', [itemLevel.class], (err, row) => {
+                    db.get('SELECT _id FROM level WHERE name = ?', [itemLevel.class.toLowerCase()], (err, row) => {
                         
                         db.run('INSERT INTO sort_level(_id_sort, _id_level, _value) VALUES(?, ?, ?)', [item._id, row._id, itemLevel.level], function(err) {
                             callback();
@@ -93,13 +93,13 @@ var insertSQlite = function(sortsJson, callback) {
                         
                     });
                     
-                }, function(err) { 
+                }, function(err) {
                     
                     
                     // Insertion dans SORT_COMPONENTS
-                    async.each(item.component, function(itemComponent, callback) {
+                    async.each(item.components, function(itemComponent, callback) {
 
-                        db.get('SELECT _id FROM component WHERE name = ?', [itemLevel.class], (err, row) => {
+                        db.get('SELECT _id FROM component WHERE name = ?', [itemComponent.toUpperCase()], (err, row) => {
 
                             db.run('INSERT INTO sort_component(_id_sort, _id_component) VALUES(?, ?)', [item._id, row._id], function(err) {
                                 callback();
@@ -113,23 +113,10 @@ var insertSQlite = function(sortsJson, callback) {
                 });
             });
         }, function(err) {    
-            
-            
-                        db.all('SELECT * FROM sort_level', [], (err, rows) => {
-                          if (err) {
-                            throw err;
-                          }
-                          rows.forEach((row) => {
-                            console.log(row._value);
-                          });
-                        });
-            
-            console.log('ok');
+            callback(true);
         });
         
     });
-    
-    callback(true);
 }
 
 

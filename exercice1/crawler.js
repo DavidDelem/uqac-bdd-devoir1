@@ -21,7 +21,7 @@ app.get('/sorts', function(req, res){
     var sorts = [];
     
     // Parcours de tous les sorts un a un
-    var array = Array.from(Array(15),(x,i)=>i+1);
+    var array = Array.from(Array(100),(x,i)=>i+1);
     
     async.each(array, function(item, callback) {
 
@@ -69,14 +69,22 @@ app.get('/sorts', function(req, res){
                                 jsonSortElem.casting_time = casting_time;
                             }
                             if (element.includes("Components")) {
+                                
                                 var res = element.split("</b> ")[1];
+                                
+                                var components = [];
+                                var regex = / *,? *(V|S|F|M|DF|F\/DF|M\/DF) *,? */g;
+                                while (match = regex.exec(res)) components.push(match[1]);
+                                jsonSortElem.components = components;
+                                
+                                /*var res = element.split("</b> ")[1];
                                 res = element.split(",");
                                 var components = [];
                                 res.forEach(function(element) {
                                     var component = element.split(" ")[1];
                                     components.push(component);
                                 });
-                                jsonSortElem.components = components;
+                                jsonSortElem.components = components;*/
                             }
                             if (element.includes("Range")) {
                                 var range = element.split("</b> ")[1];
