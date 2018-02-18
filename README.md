@@ -16,8 +16,8 @@ Lancer le fichier correspondant à la question avec la commande <b>node nomFichi
 Prérequis: avoir MongoDB de lancé et une BDD nomée "sorts" vide.
 Lancement: lancer le fichier <i>exercice1/crawler.js</i> pour faire le crawling et enregistrer dans MongoDB.
 
-- [x] Crawler réalisé en Node.js (<i>exercice1/crawler.js</i>).
-- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i> à partir de la ligne 125).
+- [x] Crawler réalisé en Node.js (<i>exercice1/crawler.js</i>). Nous utilisons le site Nous utilions le site http://www.dxcontent.com
+- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i>.
 
 - [x] Nous avons aussi réalisé un crawler en Python pour comparer langage synchrone VS asynchrone (<i>exercice1/crawler.py</i>).
 
@@ -62,12 +62,11 @@ Lancement: lancer le fichier <i>exercice1/getSpellsMongoDB.js</i>
 
 <h4>Question 3</h4>
 
-
 Prérequis: dans le crawler, commenter le code pour enregistrer dans MongoDB et décommenter celui pour enregistrer dans SQlite (voir à partir de la ligne 125).
 Lancement: lancer le fichier <i>exercice1/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis lancer <i>exercice1/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
 
 - [x] Enregistrement des données dans SQlite (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i> à partir de la ligne 125).
-- [x] Schéma plus complexe avec plusieurs tables.
+- [x] Schéma plus complexe avec plusieurs tables (voir schéma plus bas)
 - [x] Requête SQL pour récupérer les bons sorts (<i>exercice1/getSpellsSQlite.js</i>)
 
 Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n levels par sort) et une table <b>components</b> (1 à n components par sort). En raison des liaisons plusieurs à plusieurs, il est nécessaire de créer deux tables supplémentaires: 
