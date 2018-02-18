@@ -21,7 +21,9 @@ app.get('/sorts', function(req, res){
     var sorts = [];
     
     // Parcours de tous les sorts un a un
-    var array = Array.from(Array(100),(x,i)=>i+1);
+    var array = Array.from(Array(/*1975*/500),(x,i)=>i+1);
+    
+    console.log("Début de la récupération des sorts");
     
     async.each(array, function(item, callback) {
 
@@ -130,10 +132,13 @@ app.get('/sorts', function(req, res){
                 }
             });
 
-    }, function(err) {    
+    }, function(err) {
+        
+        console.log("Fin de la récupération des sorts");
         
         /* Insertion en base de donnée MongoDB */
-        
+//        console.log("Début de l'insertion des sorts avec MongoDB");
+//        
 //        insertSpells.insertMongoDB(sorts, function(result) {
 //            if(result) {
 //                console.log('Sorts inssérés dans la base de données MongoDB');
@@ -143,13 +148,11 @@ app.get('/sorts', function(req, res){
 //        });
         
         /* Insertion en base de donnée SQlite */
+        console.log("Début de l'insertion des sorts avec SQLite (peut prendre un peu de temps)");
         
-        insertSpells.insertSQlite(sorts, function(result) {
-            if(result) {
-                console.log('Sorts inssérés dans la base de données SQlite');
-            } else {
-                console.log('Echec lors de l\'insertion des sorts dans la base de données SQlite');
-            }
+        insertSpells.insertSQlite(sorts, function(err) {
+            if(err) console.log('Echec lors de l\'insertion des sorts dans la base de données SQlite');
+            else console.log('Sorts insérés dans la base de données SQlite');
         });
         
         res.json(sorts);

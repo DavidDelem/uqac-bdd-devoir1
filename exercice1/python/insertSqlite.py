@@ -218,7 +218,7 @@ def main():
         
         #update table sort_level, we use the function find_classe to have the connection between a classe and its id
         for classe in sort["levels"]:
-            idClasse = find_classe(classe["classe"], level)
+            idClasse = find_classe(classe["class"], level)
             row_sort_level= [sort["_id"],
                             idClasse,
                             classe["level"]]

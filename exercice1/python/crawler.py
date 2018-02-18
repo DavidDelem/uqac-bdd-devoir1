@@ -59,7 +59,7 @@ for x in range(1, 1976): #1976
                 perso['level'] = classe.lstrip().split(' ')[1]
             
             
-            perso['classe'] = classe.lstrip().split(' ')[0]
+            perso['class'] = classe.lstrip().split(' ')[0]
             if perso not in sort['levels']:
                 sort['levels'].append(perso)
         

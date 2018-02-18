@@ -16,6 +16,9 @@ var url = "mongodb://localhost:27017/";
 
 var sqlite3 = require('sqlite3').verbose();
 
+//Supprimer le fichier de la bdd s'il existe
+fs.unlink('./sqlitedb/sorts.db');
+
 var db = new sqlite3.Database('./sqlitedb/sorts.db', (err) => {
   if (err) console.error(err.message);
   console.log('Connected to the sorts database.');
@@ -57,63 +60,59 @@ var insertSQlite = function(sortsJson, callback) {
         db.run(fs.readFileSync('./sql_init/insert_data_table_component.sql', 'utf8'));
         db.run(fs.readFileSync('./sql_init/insert_data_table_level.sql', 'utf8'));
         
-//        db.each("select name from sqlite_master where type='table'", function (err, table) {
-//            console.log(table);
-//        });
-//        
-//        var sql = 'SELECT _id FROM component';
-// 
-//        db.all(sql, [], (err, rows) => {
-//          if (err) {
-//            throw err;
-//          }
-//          rows.forEach((row) => {
-//            console.log(row._id);
-//          });
-//        });
-        
         async.each(sortsJson, function(item, callback) {
             
             db.run('INSERT INTO sort(_id, name, school, casting_time, _range, effect, duration, saving_throw, spell_resistance, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                    [item._id, item.name, item.school, item.casting_time, item.range, item.effect, item.duration, item.saving_throw, item.spell_resistance, item.description],
             function(err) {
                 
-//                if (err) {
-//                  return console.log(err.message);
-//                }
+                if (err) callback(err);
                 
-                // Insertion dans SORT_LEVEL
-                async.each(item.levels, function(itemLevel, callback) {
-                    
-                    db.get('SELECT _id FROM level WHERE name = ?', [itemLevel.class.toLowerCase()], (err, row) => {
-                        
-                        db.run('INSERT INTO sort_level(_id_sort, _id_level, _value) VALUES(?, ?, ?)', [item._id, row._id, itemLevel.level], function(err) {
-                            callback();
-                        });
-                        
-                    });
-                    
-                }, function(err) {
-                    
-                    
-                    // Insertion dans SORT_COMPONENTS
-                    async.each(item.components, function(itemComponent, callback) {
+                else{
+                
+                    // Insertion dans SORT_LEVEL
+                    async.each(item.levels, function(itemLevel, callback) {
 
-                        db.get('SELECT _id FROM component WHERE name = ?', [itemComponent.toUpperCase()], (err, row) => {
+                        db.get('SELECT _id FROM level WHERE name = ?', [itemLevel.class.toLowerCase()], (err, row) => {
 
-                            db.run('INSERT INTO sort_component(_id_sort, _id_component) VALUES(?, ?)', [item._id, row._id], function(err) {
-                                callback();
-                            });
-                            
+                            if(typeof row !== 'undefined'){
+                                db.run('INSERT INTO sort_level(_id_sort, _id_level, _value) VALUES(?, ?, ?)', [item._id, row._id, itemLevel.level], function(err) {
+                                    if (err) callback(err);
+                                    else callback();
+                                });
+                            } else callback();
+
                         });
 
-                    }, function(err) {                         
-                        callback();
-                    });
-                });
+                    }, function(err) {
+                        
+                        if (err) callback(err);
+                        else{
+                            // Insertion dans SORT_COMPONENTS
+                            async.each(item.components, function(itemComponent, callback) {
+
+                                db.get('SELECT _id FROM component WHERE name = ?', [itemComponent.toUpperCase()], (err, row) => {
+
+                                    db.run('INSERT INTO sort_component(_id_sort, _id_component) VALUES(?, ?)', [item._id, row._id], function(err) {
+                                        if (err) callback(err);
+                                        else callback();
+                                    });
+
+                                });
+
+                            }, function(err) {
+                                if(err)callback(err);
+                                else callback();
+                            }); 
+                        }
+                          
+                    });                   
+                }
             });
-        }, function(err) {    
-            callback(true);
+            
+        }, function(err) {
+            if(err)callback(err);
+            else callback();
         });
         
     });
