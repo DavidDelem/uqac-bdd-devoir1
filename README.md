@@ -19,8 +19,6 @@ Lancement: lancer le fichier <i>exercice1/crawler.js</i> pour faire le crawling 
 - [x] Crawler réalisé en Node.js (<i>exercice1/crawler.js</i>). Nous utilisons le site Nous utilions le site http://www.dxcontent.com
 - [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i>.
 
-- [x] Nous avons aussi réalisé un crawler en Python pour comparer langage synchrone VS asynchrone (<i>exercice1/crawler.py</i>).
-
 <h4>Question 2</h4>
 
 Prérequis: avoir exécuté le code la la Q1 pour que les données soient enregistrées dans mongoDB
@@ -73,6 +71,21 @@ Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n
 <b>sort_level</b> et <b>sort_component</b>).
 
 ![alt text](./img/schemabdd.png)
+
+<h5>Nous avons également réalisé cette question en python</h5>
+
+<h6>Prérequis</h6>
+
+<h6>Crawler</h6>
+
+<h6>Insertion dans la base SQLite</h6>
+
+<h6>Récupération des sorts</h6>
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+
 
 <h3>Exercice 2</h3>
 
