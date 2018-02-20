@@ -76,14 +76,28 @@ Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n
 
 <h6>Prérequis</h6>
 
+```
+# apt install python-pip
+$ pip install beautifulsoup4
+$ pip install lxml
+```
+
 <h6>Crawler</h6>
+
+```
+python crawler.py
+```
 
 <h6>Insertion dans la base SQLite</h6>
 
+```
+python insertSqlite.py
+```
+
 <h6>Récupération des sorts</h6>
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
+
+```
+python getSpellsSQlite.py
 ```
 
 
