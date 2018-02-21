@@ -64,7 +64,7 @@ Prérequis: dans le crawler, commenter le code pour enregistrer dans MongoDB et 
 Lancement: lancer le fichier <i>exercice1/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis lancer <i>exercice1/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
 
 - [x] Enregistrement des données dans SQlite (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i> à partir de la ligne 125).
-- [x] Schéma plus complexe avec plusieurs tables (voir schéma plus bas)
+- [x] Schéma plus complexe avec plusieurs tables (voir schéma plus bas).
 - [x] Requête SQL pour récupérer les bons sorts (<i>exercice1/getSpellsSQlite.js</i>)
 
 Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n levels par sort) et une table <b>components</b> (1 à n components par sort). En raison des liaisons plusieurs à plusieurs, il est nécessaire de créer deux tables supplémentaires: 
