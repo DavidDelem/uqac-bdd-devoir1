@@ -16,8 +16,9 @@ from bs4 import BeautifulSoup
 
 sorts = []
 url='http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID='
-for x in range(1, 1976): #1976
-
+nbSorts=1976
+for x in range(1, nbSorts): #1976
+    print x/1976.0*100,"%"
     response = urllib2.urlopen(url+str(x))
     html = response.read()
     try:
@@ -59,7 +60,7 @@ for x in range(1, 1976): #1976
                 perso['level'] = classe.lstrip().split(' ')[1]
             
             
-            perso['classe'] = classe.lstrip().split(' ')[0]
+            perso['class'] = classe.lstrip().split(' ')[0]
             if perso not in sort['levels']:
                 sort['levels'].append(perso)
         
@@ -103,5 +104,6 @@ for x in range(1, 1976): #1976
 
         sorts.append(sort)
 
-
-print json.dumps(sorts, sort_keys=True, indent=4, separators=(',', ': '))
+        
+allSorts = open("allSorts.json","w") 
+allSorts.write(json.dumps(sorts, sort_keys=True, indent=4, separators=(',', ': ')))
