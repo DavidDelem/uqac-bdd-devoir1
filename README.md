@@ -1,19 +1,23 @@
 # uqac-bdd-devoir1
 
-<h2>Rapport du devoir 1 de Bases de données réparties - Hivers 2018</h2>
+<h2>Rapport du devoir 1 de Bases de données réparties - Hiver 2018</h2>
 <b>David Delemotte, Paul Michaud, Rénald Morice, Loïc Bothorel</b>
 
 <h3>Exercice 1</h3>
 
 <h4>Installation du projet</h4>
 
-Se placer dans le dossier exercice1/js et faire <b>npm install</b> pour charger les dépendances.
+Se placer dans le dossier exercice1/js et installer les dépendances avec la commande suivante :
+
+```
+npm install
+```
 
 ---
 
 <h4>Question 1</h4>
 
-**`Prérequis`** avoir MongoDB de lancé et une base de données nomée "sorts" vide.<br/>
+**`Prérequis`** avoir MongoDB de lancé et une base de données nommée "sorts" vide.<br/>
 **`Lancement`** lancer le fichier <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans MongoDB.
 
 **`Ce qui a été fait`**
@@ -25,7 +29,7 @@ Se placer dans le dossier exercice1/js et faire <b>npm install</b> pour charger 
 
 <h4>Question 2</h4>
 
-**`Prérequis`** avoir exécuté le code la la Q1 pour que les données soient enregistrées dans mongoDB<br/>
+**`Prérequis`** avoir exécuté le code de la Question 1 pour que les données soient enregistrées dans mongoDB<br/>
 **`Lancement`** lancer le fichier <i>exercice1/js/getSpellsMongoDB.js</i>
 
 **`Ce qui a été fait`**
@@ -90,9 +94,7 @@ Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n
 
 Nous avons également réalisé une partie de cet exercice en python, dans le dossier <i>exercice1/python</i> pour comparer langage synchrone/langage asynchrone.
 
-**`Prérequis`**
-
-Se placer dans <i>exercice1/python</i>
+**`Prérequis`** Se placer dans <i>exercice1/python</i>
 
 ```
 # apt install python-pip
@@ -130,9 +132,7 @@ Les sorts trouvés en résultat sont les mêmes qu'avec la version Node.js.
 
 L'exercice 2 a été réalisé en node.js (exercice2/pagerank.js). 
 
-**`Prérequis`**
-
-Se placer dans <i>exercice2/</i> et installer le module MongoDB.
+**`Prérequis`** Se placer dans <i>exercice2/</i> et installer le module MongoDB.
 
 ```
 npm install mongodb --save
