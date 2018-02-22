@@ -1,7 +1,7 @@
 # uqac-bdd-devoir1
 
 <h2>Rapport du devoir 1 de Bases de données réparties - Hivers 2018</h2>
-<b>David Delemotte, Paul Michaud, Rénald Morice, Loic Bothorel</b>
+<b>David Delemotte, Paul Michaud, Rénald Morice, Loïc Bothorel</b>
 
 <h3>Exercice 1</h3>
 
@@ -128,5 +128,20 @@ Les sorts trouvés en résultat sont les mêmes qu'avec la version Node.js.
 
 <h3>Exercice 2</h3>
 
-L'exercice 2 a été réalisé en node.js (exercice2/javascript/pagerank.js) et en Scala. 
+L'exercice 2 a été réalisé en node.js (exercice2/pagerank.js). 
 
+**`Prérequis`**
+
+Se placer dans <i>exercice1/</i> et installer le module MongoDB
+
+```
+npm install mongodb --save
+```
+
+**`Ce qui a été fait`**
+
+- [x] Calcul du Page Rank 
+
+```
+node pagerank.js
+```
