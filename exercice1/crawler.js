@@ -140,7 +140,7 @@ async.each(array, function(item, callback) {
     });
 
     /* Insertion en base de donnée SQlite */
-//    console.log("Début de l'insertion des sorts avec SQLite (peut prendre un peu de temps)");
+//    console.log("Début de l'insertion des sorts avec SQLite");
 //
 //    insertSpells.insertSQlite(sorts, function(err) {
 //        if(err) console.log('Echec lors de l\'insertion des sorts dans la BDD SQlite : ' + err);
