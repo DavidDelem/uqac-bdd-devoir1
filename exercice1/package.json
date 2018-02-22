@@ -10,6 +10,7 @@
     "cheerio": "latest",
     "mongodb": "latest",
     "async": "latest",
-    "sqlite3": "latest"
+    "sqlite3": "latest",
+    "sqlite3-transactions": "latest"
   }
 }
