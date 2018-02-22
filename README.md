@@ -7,7 +7,7 @@
 
 <h4>Installation du projet</h4>
 
-Se placer dans le dossier exercice1/js et installer les dépendances avec la commande suivante :
+Se placer dans le dossier exercice1/javascript et installer les dépendances avec la commande suivante :
 
 ```
 npm install
@@ -17,24 +17,24 @@ npm install
 
 <h4>Question 1</h4>
 
-**`Prérequis`** avoir MongoDB de lancé et une base de données nommée "sorts" vide.<br/>
-**`Lancement`** lancer le fichier <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans MongoDB.
+**`Prérequis`** avoir MongoDB de lancé.<br/>
+**`Lancement`** lancer la commande <i>node crawler.js mongodb</i> pour faire le crawling et l'insertion des données dans une base MongoDB.
 
 **`Ce qui a été fait`**
 
-- [x] Crawler réalisé en Node.js (<i>exercice1/js/crawler.js</i>) en utilisant http://www.dxcontent.com
-- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/js/insertSpells.js</i>.
+- [x] Crawler réalisé en Node.js en utilisant le site web : http://www.dxcontent.com
+- [x] Enregistrement des données dans une base MongoDB (le crawler appelle la fonction <i>insertMongoDB</i> du script <i>insertSpells.js</i>).
 
 ---
 
 <h4>Question 2</h4>
 
 **`Prérequis`** avoir exécuté le code de la Question 1 pour que les données soient enregistrées dans mongoDB<br/>
-**`Lancement`** lancer le fichier <i>exercice1/js/getSpellsMongoDB.js</i>
+**`Lancement`** lancer la commande <i>node getSpellsMongoDB.js</i>
 
 **`Ce qui a été fait`**
 
-- [x] Code MapReduce pour récupérer les bons sorts (<i>exercice1/js/getSpellsMongoDB.js</i>).
+- [x] Code MapReduce pour récupérer les bons sorts pour libérer Pito.
 
 **`Résultats et réponse à la question`**
 
@@ -74,14 +74,13 @@ npm install
 
 <h4>Question 3</h4>
 
-**`Prérequis`** Dans le <i>crawler.js</i>, commenter le code pour enregistrer dans MongoDB et décommenter celui pour SQlite (voir à partir de la ligne 125).<br/>
-**`Lancement`** Lancer <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis <i>exercice1/js/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
+**`Lancement`** lancer la commande <i>node crawler.js sqlite</i> pour faire le crawling et l'insertion des données dans une base SQLite, puis la commande <i>node getSpellsSQLlite.js</i> pour récupérer les sorts valides pour libérer Pito.
 
 **`Ce qui a été fait`**
 
-- [x] Enregistrement des données dans SQlite (le crawler appelle une fonction de <i>exercice1/js/insertSpells.js</i> à partir de la ligne 125).
+- [x] Enregistrement des données dans une base SQlite (le crawler appelle la fonction <i>insertSQlite</i> du script <i>insertSpells.js</i>).
 - [x] Schéma plus complexe avec plusieurs tables (voir schéma plus bas).
-- [x] Requête SQL pour récupérer les bons sorts (<i>exercice1/js/getSpellsSQlite.js</i>)
+- [x] Requête SQL pour récupérer les bons sorts pour libérer Pito (<i>exercice1/js/getSpellsSQlite.js</i>)
 
 Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n levels par sort) et une table <b>components</b> (1 à n components par sort). En raison des liaisons plusieurs à plusieurs, il est nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>).
