@@ -1,6 +1,6 @@
 # uqac-bdd-devoir1
 
-<h2>Devoir 1 de Bases de données réparties - Hivers 2018</h2>
+<h2>Rapport du devoir 1 de Bases de données réparties - Hivers 2018</h2>
 <b>David Delemotte, Paul Michaud, Rénald Morice, Loic Bothorel</b>
 
 <h3>Exercice 1</h3>
@@ -70,8 +70,8 @@ Se placer dans le dossier exercice1/js et faire <b>npm install</b> pour charger 
 
 <h4>Question 3</h4>
 
-**`Prérequis`** Dans le crawler, commenter le code pour enregistrer dans MongoDB et décommenter celui pour enregistrer dans SQlite (voir à partir de la ligne 125).
-**`Lancement`** lancer <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis <i>exercice1/js/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
+**`Prérequis`** Dans le <i>crawler.js</i>, commenter le code pour enregistrer dans MongoDB et décommenter celui pour SQlite (voir à partir de la ligne 125).<br/>
+**`Lancement`** Lancer <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis <i>exercice1/js/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
 
 **`Ce qui a été fait`**
 
@@ -82,7 +82,7 @@ Se placer dans le dossier exercice1/js et faire <b>npm install</b> pour charger 
 Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n levels par sort) et une table <b>components</b> (1 à n components par sort). En raison des liaisons plusieurs à plusieurs, il est nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>).
 
-![alt text](./img/schemabdd.png)
+![schema bdd](./img/schemabdd.png)
 
 ---
 
