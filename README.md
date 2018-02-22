@@ -7,24 +7,32 @@
 
 <h4>Installation du projet</h4>
 
-Se placer dans le dossier exercice1
-Lancer la commande <b>npm install</b> pour charger les dépendances
-Lancer le fichier correspondant à la question avec la commande <b>node nomFichier.js</b>
+Se placer dans le dossier exercice1/js et faire <b>npm install</b> pour charger les dépendances.
+
+---
 
 <h4>Question 1</h4>
 
-Prérequis: avoir MongoDB de lancé et une BDD nomée "sorts" vide.
-Lancement: lancer le fichier <i>exercice1/crawler.js</i> pour faire le crawling et enregistrer dans MongoDB.
+**`Prérequis`** avoir MongoDB de lancé et une base de données nomée "sorts" vide.<br/>
+**`Lancement`** lancer le fichier <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans MongoDB.
 
-- [x] Crawler réalisé en Node.js (<i>exercice1/crawler.js</i>). Nous utilisons le site Nous utilions le site http://www.dxcontent.com
-- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i>.
+**`Ce qui a été fait`**
+
+- [x] Crawler réalisé en Node.js (<i>exercice1/js/crawler.js</i>) en utilisant http://www.dxcontent.com
+- [x] Enregistrement des données dans MongoDB (le crawler appelle une fonction de <i>exercice1/js/insertSpells.js</i>.
+
+---
 
 <h4>Question 2</h4>
 
-Prérequis: avoir exécuté le code la la Q1 pour que les données soient enregistrées dans mongoDB
-Lancement: lancer le fichier <i>exercice1/getSpellsMongoDB.js</i>
+**`Prérequis`** avoir exécuté le code la la Q1 pour que les données soient enregistrées dans mongoDB<br/>
+**`Lancement`** lancer le fichier <i>exercice1/js/getSpellsMongoDB.js</i>
 
-- [x] Code MapReduce pour récupérer les bons sorts (<i>exercice1/getSpellsMongoDB.js</i>). Résultats obtenus:
+**`Ce qui a été fait`**
+
+- [x] Code MapReduce pour récupérer les bons sorts (<i>exercice1/js/getSpellsMongoDB.js</i>).
+
+**`Résultats et réponse à la question`**
 
 | ID Sort | Nom Sort |
 | ------- | -------- |
@@ -58,23 +66,33 @@ Lancement: lancer le fichier <i>exercice1/getSpellsMongoDB.js</i>
 
 - [x] Réponse à la question: le sort choisi par les experts pour libérer Pito est <b>Dimension Door (ID : 148)</b>.
 
+---
+
 <h4>Question 3</h4>
 
-Prérequis: dans le crawler, commenter le code pour enregistrer dans MongoDB et décommenter celui pour enregistrer dans SQlite (voir à partir de la ligne 125).
-Lancement: lancer le fichier <i>exercice1/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis lancer <i>exercice1/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
+**`Prérequis`** Dans le crawler, commenter le code pour enregistrer dans MongoDB et décommenter celui pour enregistrer dans SQlite (voir à partir de la ligne 125).
+**`Lancement`** lancer <i>exercice1/js/crawler.js</i> pour faire le crawling et enregistrer dans SQlite, puis <i>exercice1/js/getSpellsSQLlite.js</i> pour récupérer les bons sorts.
 
-- [x] Enregistrement des données dans SQlite (le crawler appelle une fonction de <i>exercice1/insertSpells.js</i> à partir de la ligne 125).
+**`Ce qui a été fait`**
+
+- [x] Enregistrement des données dans SQlite (le crawler appelle une fonction de <i>exercice1/js/insertSpells.js</i> à partir de la ligne 125).
 - [x] Schéma plus complexe avec plusieurs tables (voir schéma plus bas).
-- [x] Requête SQL pour récupérer les bons sorts (<i>exercice1/getSpellsSQlite.js</i>)
+- [x] Requête SQL pour récupérer les bons sorts (<i>exercice1/js/getSpellsSQlite.js</i>)
 
 Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n levels par sort) et une table <b>components</b> (1 à n components par sort). En raison des liaisons plusieurs à plusieurs, il est nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>).
 
 ![alt text](./img/schemabdd.png)
 
-<h5>Nous avons également réalisé cette question en python</h5>
+---
 
-<h6>Prérequis</h6>
+<h4>Version en Python</h4>
+
+Nous avons également réalisé une partie de cet exercice en python, dans le dossier <i>exercice1/python</i> pour comparer langage synchrone/langage asynchrone.
+
+**`Prérequis`**
+
+Se placer dans <i>exercice1/python</i>
 
 ```
 # apt install python-pip
@@ -82,26 +100,33 @@ $ pip install beautifulsoup4
 $ pip install lxml
 ```
 
-<h6>Crawler</h6>
+**`Ce qui a été fait`**
+
+- [x] Crawler en python (lancer <i>exercice1/python/crawler.py</i>) en utilisant http://www.dxcontent.com
 
 ```
 python crawler.py
 ```
 
-<h6>Insertion dans la base SQLite</h6>
+- [x] Insertion dans la base SQlite (lancer <i>exercice1/python/insertSqlite.py</i>)
 
 ```
 python insertSqlite.py
 ```
 
-<h6>Récupération des sorts</h6>
+- [x] Récupération des sorts (lancer <i>exercice1/python/getSpellsSQlite.py</i>)
 
 ```
 python getSpellsSQlite.py
 ```
 
+**`Résultats`**
+
+Les sorts trouvés en résultat sont les mêmes qu'avec la version Node.js.
+
+---
 
 <h3>Exercice 2</h3>
 
-L'exercice 2 a été réalisé en node.js (exercice2/javascript/pagerank.js). 
+L'exercice 2 a été réalisé en node.js (exercice2/javascript/pagerank.js) et en Scala. 
 
