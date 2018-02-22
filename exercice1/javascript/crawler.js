@@ -1,3 +1,16 @@
+/*------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------*/
+/* Récupération du paramètre de script (MongoDB ou SQLite)                      */
+/*------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------*/
+
+const args = process.argv.slice(2);
+
+if(! /^(mongodb|sqlite)$/i.test(args[0]) ){
+    console.log("ERREUR : il faut passer un paramètre lors de l'appel du script qui prend soit la valeur MongoDB ou SQLite (insensible à la casse)");
+    process.exit()
+}
+
 /*-------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------*/
 /* Crawler pour récupérer les sorts sur internet                                       */
@@ -128,23 +141,32 @@ async.each(array, function(item, callback) {
         });
 
 }, function(err) {
-
+    
     console.log("Fin de la récupération des sorts");
+    
+    if(/^mongodb$/i.test(args[0])){
+        /* Insertion en base de donnée MongoDB */
+        console.log("Début d'insertion dans la BDD MongoDB");
 
-    /* Insertion en base de donnée MongoDB */
-    console.log("Début de l'insertion des sorts avec MongoDB");
+        insertSpells.insertMongoDB(sorts, function(result) {
+            if(result){
+                console.log("Fin d'insertion dans la BDD MongoDB");
+                console.log("Lancer la commande \"node getSpellsMongoDB.js\" pour afficher les sorts pour libérer Pito !");
+            }
+            else console.log("Echec lors de l'insertion des sorts dans la base de données MongoDB");
+        });
+    }
+    else if (/^sqlite$/i.test(args[0])){
+        /* Insertion en base de donnée SQlite */
+        console.log("Début d'insertion dans la BDD SQlite");
 
-    insertSpells.insertMongoDB(sorts, function(result) {
-        if(result) console.log('Sorts inssérés dans la base de données MongoDB');
-        else console.log('Echec lors de l\'insertion des sorts dans la base de données MongoDB');
-    });
-
-    /* Insertion en base de donnée SQlite */
-//    console.log("Début de l'insertion des sorts avec SQLite");
-//
-//    insertSpells.insertSQlite(sorts, function(err) {
-//        if(err) console.log('Echec lors de l\'insertion des sorts dans la BDD SQlite : ' + err);
-//        else console.log('Sorts insérés dans la base de données SQlite');
-//    });
+        insertSpells.insertSQlite(sorts, function(err) {
+            if(err) console.log("Echec lors de l'insertion des sorts dans la BDD SQlite : " + err);
+            else{
+                console.log("Fin d'insertion dans la BDD SQlite");
+                console.log("Lancer la commande \"node getSpellsSQlite.js\" pour afficher les sorts pour libérer Pito !");
+            }
+        });
+    }
 
 });
