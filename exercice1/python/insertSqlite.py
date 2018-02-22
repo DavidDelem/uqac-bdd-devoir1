@@ -168,7 +168,7 @@ def find_comp(myComp, allComp):
         
 
 def main():
-    database = "../sqlitedb/sorts.db"
+    database = "sqlitedb/sorts.db"
 
     # create a database connection
     conn = create_connection(database)
