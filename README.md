@@ -132,7 +132,7 @@ L'exercice 2 a été réalisé en node.js (exercice2/pagerank.js).
 
 **`Prérequis`**
 
-Se placer dans <i>exercice1/</i> et installer le module MongoDB
+Se placer dans <i>exercice2/</i> et installer le module MongoDB.
 
 ```
 npm install mongodb --save
@@ -145,3 +145,7 @@ npm install mongodb --save
 ```
 node pagerank.js
 ```
+
+**`Résultats`**
+
+Les Page Ranks calculculés sont bien ceux de l'énoncé.
