@@ -80,7 +80,7 @@ npm install
 
 - [x] Enregistrement des données dans une base SQlite (le crawler appelle la fonction <i>insertSQlite</i> du script <i>insertSpells.js</i>).
 - [x] Schéma plus complexe avec plusieurs tables (voir schéma plus bas).
-- [x] Requête SQL pour récupérer les bons sorts pour libérer Pito (<i>exercice1/js/getSpellsSQlite.js</i>)
+- [x] Requête SQL pour récupérer les bons sorts pour libérer Pito (<i>exercice1/javascript/getSpellsSQlite.js</i>)
 
 Le schéma est le suivant (une table <b>sort</b>, une table <b>level</b> (1 à n levels par sort) et une table <b>components</b> (1 à n components par sort). En raison des liaisons plusieurs à plusieurs, il est nécessaire de créer deux tables supplémentaires: 
 <b>sort_level</b> et <b>sort_component</b>).
