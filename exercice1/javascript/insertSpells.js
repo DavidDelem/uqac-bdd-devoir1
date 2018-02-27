@@ -50,7 +50,8 @@ var insertMongoDB = function(sortsJson, callback) {
 
 var sqlite3 = require("sqlite3"), TransactionDatabase = require("sqlite3-transactions").TransactionDatabase;
 //Supprimer le fichier de la bdd s'il existe
-fs.unlink('./sorts.db');
+fs.unlink('./sorts.db', (err) => {
+});
 var db = new TransactionDatabase(new sqlite3.Database("./sorts.db", sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE));
 
 var insertSQlite = function(sortsJson, callback) {
