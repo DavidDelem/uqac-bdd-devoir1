@@ -12,6 +12,12 @@ var url = "mongodb://localhost:27017/";
 
 var insertMongoDB = function(sortsJson, callback) {
     
+    //Create db if not exists
+    MongoClient.connect(url + "sorts", function(err, db) {
+        if (err) throw err;
+        db.close();
+    });
+    
     MongoClient.connect(url, function(err, db) {
         
         if (err) callback(false);
