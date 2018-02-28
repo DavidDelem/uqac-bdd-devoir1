@@ -43,7 +43,7 @@ def select_spell_to_free_pito(conn):
 
 def main():
     
-    database = "sqlitedb/sorts.db"
+    database = "sorts.db"
 
     # create a database connection
     conn = create_connection(database)
